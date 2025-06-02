@@ -26,12 +26,17 @@ fun IPentatonic.getPitches(key: IKey, includeSpace: Boolean = true): List<Pitch>
         tonicIndexTemp -= 12
     }
     val pitches = mutableListOf<Pitch>()
+    var init = true
     while (tonicIndexTemp <= allPitches.lastIndex) {
         pitches.tryAdd(allPitches, tonicIndexTemp, DoIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, ReIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, MiIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, SolIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, LaIndex, includeSpace)
+        if (init && pitches.last() == Pitch.Empty) {
+            pitches.clear()
+        }
+        init = false
         tonicIndexTemp += 12
     }
     return pitches

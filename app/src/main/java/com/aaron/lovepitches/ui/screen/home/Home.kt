@@ -121,7 +121,7 @@ fun HomeScreen() {
             itemsIndexed(
                 items = pitches,
                 key = { index, pitch ->
-                    if (pitch == Pitch.Empty) index else pitch.name
+                    if (pitch == Pitch.Empty) index else pitch.qualifiedName
                 },
                 contentType = { _, _ -> "Scale" }
             ) { _, pitch ->

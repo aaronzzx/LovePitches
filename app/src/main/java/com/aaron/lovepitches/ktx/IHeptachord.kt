@@ -26,6 +26,7 @@ fun IHeptachord.getPitches(key: IKey, includeSpace: Boolean = true): List<Pitch>
         tonicIndexTemp -= 12
     }
     val pitches = mutableListOf<Pitch>()
+    var init = true
     while (tonicIndexTemp <= allPitches.lastIndex) {
         pitches.tryAdd(allPitches, tonicIndexTemp, DoIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, ReIndex, includeSpace)
@@ -34,6 +35,10 @@ fun IHeptachord.getPitches(key: IKey, includeSpace: Boolean = true): List<Pitch>
         pitches.tryAdd(allPitches, tonicIndexTemp, SolIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, LaIndex, includeSpace)
         pitches.tryAdd(allPitches, tonicIndexTemp, TiIndex, includeSpace)
+        if (init && pitches.last() == Pitch.Empty) {
+            pitches.clear()
+        }
+        init = false
         tonicIndexTemp += 12
     }
     return pitches

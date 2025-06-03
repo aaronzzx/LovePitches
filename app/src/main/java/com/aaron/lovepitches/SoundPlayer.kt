@@ -38,7 +38,8 @@ object SoundPlayer {
         raw: List<Int>,
         bmp: Int = 90,
         rate: Float = 1f,
-        loop: Boolean = true
+        loop: Boolean = true,
+        loopDelayMs: Long = 500L
     ) {
         if (raw.isEmpty()) {
             return
@@ -53,6 +54,9 @@ object SoundPlayer {
                         play(context, res, rate)
                     }
                     delay(delayMs)
+                }
+                if (loop && loopDelayMs > 0) {
+                    delay(loopDelayMs)
                 }
             } while (isActive && loop)
         }.also { job ->

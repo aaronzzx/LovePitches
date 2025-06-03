@@ -78,7 +78,7 @@ fun IntervalsScreen() {
                                 SoundPlayer.play(
                                     context = context,
                                     raw = list.map { it.rawRes },
-                                    bmp = 100,
+                                    bmp = 120,
                                     rate = 1f
                                 )
                             }

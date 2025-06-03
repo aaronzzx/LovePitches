@@ -72,7 +72,6 @@ fun IntervalsScreen() {
             title = "Intervals",
             actions = {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-
                     Button(
                         onClick = {
                             if (list.isNotEmpty()) {
@@ -182,7 +181,11 @@ fun IntervalsScreen() {
                         .fillMaxWidth()
                         .aspectRatio(1f)
                         .let { thisModifier ->
-                            if (pitch == Pitch.Empty) thisModifier else {
+                            if (pitch == Pitch.Empty) {
+                                thisModifier.onClick {
+                                    list.add(pitch)
+                                }
+                            } else {
                                 thisModifier
                                     .clipToBackground(
                                         color = MaterialTheme.colorScheme.primary,
@@ -222,7 +225,11 @@ fun IntervalsScreen() {
                             list
                                 .toList()
                                 .joinToString {
-                                    "${it.singName(mode, key, pitches)}(${it.qualifiedName})"
+                                    if (it == Pitch.Empty) {
+                                        "Empty"
+                                    } else {
+                                        "${it.singName(mode, key, pitches)}(${it.qualifiedName})"
+                                    }
                                 }
                         }
                     }.value

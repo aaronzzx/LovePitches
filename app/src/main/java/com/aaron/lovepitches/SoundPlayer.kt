@@ -49,7 +49,9 @@ object SoundPlayer {
             val delayMs = ((60f / bmp) * 1000).toLong()
             do {
                 raw.fastForEach { res ->
-                    play(context, res, rate)
+                    if (res > 0) {
+                        play(context, res, rate)
+                    }
                     delay(delayMs)
                 }
             } while (isActive && loop)

@@ -20,4 +20,8 @@ data object Routes {
     @Keep
     @Serializable
     data object Pitches
+
+    @Keep
+    @Serializable
+    data object Mode
 }

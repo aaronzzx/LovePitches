@@ -9,115 +9,7 @@ package com.aaron.lovepitches.music
 
 data object Modes {
 
-    val value: List<IMode> = ChineseMode.value + ChurchMode.value
-
-    /**
-     * 宫商角徵羽，即宫等于1(Do)，商等于2(Re)，角等于3(Mi)，徵等于5(Sol)，羽等于6(La)，亦称作五音
-     */
-    data object ChineseMode {
-
-        val value: List<IPentatonic> = listOf(Gong, Shang, Jue, Zhi, Yu)
-
-        /**
-         * 宫调式
-         */
-        data object Gong : IPentatonic {
-
-            override val name: String = "宫"
-
-            override val Do: Pitch = Pitches.P3.C3
-            override val Re: Pitch = Pitches.P3.D3
-            override val Mi: Pitch = Pitches.P3.E3
-            override val Sol: Pitch = Pitches.P3.G3
-            override val La: Pitch = Pitches.P3.A3
-
-            override val DoIndex: Int = 0
-            override val ReIndex: Int = 2
-            override val MiIndex: Int = 4
-            override val SolIndex: Int = 7
-            override val LaIndex: Int = 9
-        }
-
-        /**
-         * 商调式
-         */
-        data object Shang : IPentatonic {
-
-            override val name: String = "商"
-
-            override val Do: Pitch = Pitches.P3.D3
-            override val Re: Pitch = Pitches.P3.E3
-            override val Mi: Pitch = Pitches.P3.G3
-            override val Sol: Pitch = Pitches.P3.A3
-            override val La: Pitch = Pitches.P4.C4
-
-            override val DoIndex: Int = 0
-            override val ReIndex: Int = 2
-            override val MiIndex: Int = 5
-            override val SolIndex: Int = 7
-            override val LaIndex: Int = 10
-        }
-
-        /**
-         * 角调式
-         */
-        data object Jue : IPentatonic {
-
-            override val name: String = "角"
-
-            override val Do: Pitch = Pitches.P3.E3
-            override val Re: Pitch = Pitches.P3.G3
-            override val Mi: Pitch = Pitches.P3.A3
-            override val Sol: Pitch = Pitches.P4.C4
-            override val La: Pitch = Pitches.P4.D4
-
-            override val DoIndex: Int = 0
-            override val ReIndex: Int = 3
-            override val MiIndex: Int = 5
-            override val SolIndex: Int = 8
-            override val LaIndex: Int = 10
-        }
-
-        /**
-         * 徵调式
-         */
-        data object Zhi : IPentatonic {
-
-            override val name: String = "徵"
-
-            override val Do: Pitch = Pitches.P3.G3
-            override val Re: Pitch = Pitches.P3.A3
-            override val Mi: Pitch = Pitches.P4.C4
-            override val Sol: Pitch = Pitches.P4.D4
-            override val La: Pitch = Pitches.P4.E4
-
-            override val DoIndex: Int = 0
-            override val ReIndex: Int = 2
-            override val MiIndex: Int = 5
-            override val SolIndex: Int = 7
-            override val LaIndex: Int = 9
-        }
-
-        /**
-         * 羽调式
-         */
-        data object Yu : IPentatonic {
-
-            override val name: String = "羽"
-
-            override val Do: Pitch = Pitches.P3.A3
-            override val Re: Pitch = Pitches.P4.C4
-            override val Mi: Pitch = Pitches.P4.D4
-            override val Sol: Pitch = Pitches.P4.E4
-            override val La: Pitch = Pitches.P4.G4
-
-            override val DoIndex: Int = 0
-            override val ReIndex: Int = 3
-            override val MiIndex: Int = 5
-            override val SolIndex: Int = 7
-            override val LaIndex: Int = 10
-        }
-    }
+    val value: List<IMode> = ChurchMode.value + ChineseMode.value
 
     data object ChurchMode {
 
@@ -289,6 +181,114 @@ data object Modes {
             override val SolIndex: Int = 6
             override val LaIndex: Int = 8
             override val TiIndex: Int = 10
+        }
+    }
+
+    /**
+     * 宫商角徵羽，即宫等于1(Do)，商等于2(Re)，角等于3(Mi)，徵等于5(Sol)，羽等于6(La)，亦称作五音
+     */
+    data object ChineseMode {
+
+        val value: List<IPentatonic> = listOf(Gong, Shang, Jue, Zhi, Yu)
+
+        /**
+         * 宫调式
+         */
+        data object Gong : IPentatonic {
+
+            override val name: String = "宫"
+
+            override val Do: Pitch = Pitches.P3.C3
+            override val Re: Pitch = Pitches.P3.D3
+            override val Mi: Pitch = Pitches.P3.E3
+            override val Sol: Pitch = Pitches.P3.G3
+            override val La: Pitch = Pitches.P3.A3
+
+            override val DoIndex: Int = 0
+            override val ReIndex: Int = 2
+            override val MiIndex: Int = 4
+            override val SolIndex: Int = 7
+            override val LaIndex: Int = 9
+        }
+
+        /**
+         * 商调式
+         */
+        data object Shang : IPentatonic {
+
+            override val name: String = "商"
+
+            override val Do: Pitch = Pitches.P3.D3
+            override val Re: Pitch = Pitches.P3.E3
+            override val Mi: Pitch = Pitches.P3.G3
+            override val Sol: Pitch = Pitches.P3.A3
+            override val La: Pitch = Pitches.P4.C4
+
+            override val DoIndex: Int = 0
+            override val ReIndex: Int = 2
+            override val MiIndex: Int = 5
+            override val SolIndex: Int = 7
+            override val LaIndex: Int = 10
+        }
+
+        /**
+         * 角调式
+         */
+        data object Jue : IPentatonic {
+
+            override val name: String = "角"
+
+            override val Do: Pitch = Pitches.P3.E3
+            override val Re: Pitch = Pitches.P3.G3
+            override val Mi: Pitch = Pitches.P3.A3
+            override val Sol: Pitch = Pitches.P4.C4
+            override val La: Pitch = Pitches.P4.D4
+
+            override val DoIndex: Int = 0
+            override val ReIndex: Int = 3
+            override val MiIndex: Int = 5
+            override val SolIndex: Int = 8
+            override val LaIndex: Int = 10
+        }
+
+        /**
+         * 徵调式
+         */
+        data object Zhi : IPentatonic {
+
+            override val name: String = "徵"
+
+            override val Do: Pitch = Pitches.P3.G3
+            override val Re: Pitch = Pitches.P3.A3
+            override val Mi: Pitch = Pitches.P4.C4
+            override val Sol: Pitch = Pitches.P4.D4
+            override val La: Pitch = Pitches.P4.E4
+
+            override val DoIndex: Int = 0
+            override val ReIndex: Int = 2
+            override val MiIndex: Int = 5
+            override val SolIndex: Int = 7
+            override val LaIndex: Int = 9
+        }
+
+        /**
+         * 羽调式
+         */
+        data object Yu : IPentatonic {
+
+            override val name: String = "羽"
+
+            override val Do: Pitch = Pitches.P3.A3
+            override val Re: Pitch = Pitches.P4.C4
+            override val Mi: Pitch = Pitches.P4.D4
+            override val Sol: Pitch = Pitches.P4.E4
+            override val La: Pitch = Pitches.P4.G4
+
+            override val DoIndex: Int = 0
+            override val ReIndex: Int = 3
+            override val MiIndex: Int = 5
+            override val SolIndex: Int = 7
+            override val LaIndex: Int = 10
         }
     }
 }

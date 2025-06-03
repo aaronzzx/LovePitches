@@ -26,6 +26,7 @@ import com.aaron.lovepitches.entity.Routes
 import com.aaron.lovepitches.ktx.LocalNavController
 import com.aaron.lovepitches.ui.screen.home.HomeScreen
 import com.aaron.lovepitches.ui.screen.intervals.IntervalsScreen
+import com.aaron.lovepitches.ui.screen.mode.ModeScreen
 import com.aaron.lovepitches.ui.screen.pitches.PitchesScreen
 import com.aaron.lovepitches.ui.theme.LovePitchesTheme
 import kotlin.reflect.KType
@@ -61,13 +62,24 @@ fun LovePitchesApp() {
                 }
             ) {
                 myComposable<Routes.Home> {
-                    HomeScreen()
+                    HomeScreen(
+                        onNavToPitches = {},
+                        onNavToMode = {
+                            navController.navigate(Routes.Mode)
+                        },
+                        onNavToIntervals = {
+                            navController.navigate(Routes.Intervals)
+                        }
+                    )
                 }
                 myComposable<Routes.Intervals> {
                     IntervalsScreen()
                 }
                 myComposable<Routes.Pitches> {
                     PitchesScreen()
+                }
+                myComposable<Routes.Mode> {
+                    ModeScreen()
                 }
             }
         }

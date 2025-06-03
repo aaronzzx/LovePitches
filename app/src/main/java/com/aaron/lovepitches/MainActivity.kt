@@ -20,6 +20,11 @@ class MainActivity : ComponentActivity() {
             LovePitchesApp()
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        SoundPlayer.pauseAll()
+    }
 }
 
 private fun ComponentActivity.myEnableEdgeToEdge(isAppNightMode: Boolean = false) {

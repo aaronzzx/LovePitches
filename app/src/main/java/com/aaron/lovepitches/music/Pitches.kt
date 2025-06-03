@@ -181,7 +181,7 @@ data class Pitch(
     val name: String,
     val group: Int,
     val symbol: Symbol,
-    val audioFile: Int
+    val rawRes: Int
 ) {
 
     companion object {

@@ -1,6 +1,5 @@
-package com.aaron.lovepitches.ui.screen.home
+package com.aaron.lovepitches.ui.screen.mode
 
-import android.media.MediaPlayer
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,6 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aaron.compose.ktx.clipToBackground
 import com.aaron.compose.ktx.onClick
+import com.aaron.lovepitches.SoundPlayer
+import com.aaron.lovepitches.ktx.LocalNavController
 import com.aaron.lovepitches.ktx.getPitches
 import com.aaron.lovepitches.ktx.scaleSize
 import com.aaron.lovepitches.ktx.singName
@@ -44,22 +45,22 @@ import com.aaron.lovepitches.ui.widgets.TopBar
 
 /**
  * @author aaronzzxup@gmail.com
- * @since 2025/6/2
+ * @since 2025/6/3
  */
 
 @Composable
-fun HomeScreen() {
+fun ModeScreen() {
     val context = LocalContext.current
+    val navController = LocalNavController.current
+
     Column {
         TopBar(
-            onBack = { /*TODO*/ },
-            title = "Home",
-            titleStyle = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.W900),
-            showBackIcon = false
+            onBack = { navController.popBackStack() },
+            title = "Mode"
         )
 
         var mode: IMode by remember {
-            mutableStateOf(Modes.ChineseMode.Gong)
+            mutableStateOf(Modes.ChurchMode.Ionian)
         }
         var key: IKey by remember {
             mutableStateOf(Keys.CKey)
@@ -139,14 +140,7 @@ fun HomeScreen() {
                                     .pointerInput(context, pitch) {
                                         detectTapGestures(
                                             onPress = {
-                                                val mp = MediaPlayer
-                                                    .create(context, pitch.audioFile)
-                                                    .apply {
-                                                        setOnCompletionListener {
-                                                            release()
-                                                        }
-                                                    }
-                                                mp.start()
+                                                SoundPlayer.play(context, pitch.rawRes)
                                             }
                                         )
                                     }
